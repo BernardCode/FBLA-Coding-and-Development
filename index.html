@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cupertino High CareerBridge</title>
+    <link rel="stylesheet" href="home-styles.css" />
+    <script>
+      // Dropdown toggle
+      function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown");
+        if (dropdown.style.display === "block") {
+          dropdown.style.display = "none";
+        } else {
+          dropdown.style.display = "block";
+        }
+      }
+
+      // Scroll effects
+      document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll("section");
+        const scrollDots = document.querySelectorAll(".scroll-dot");
+
+        // Create scroll observer
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+
+                // Update active dot
+                const sectionId = entry.target.id;
+                scrollDots.forEach((dot) => {
+                  if (dot.dataset.section === sectionId) {
+                    dot.classList.add("active");
+                  } else {
+                    dot.classList.remove("active");
+                  }
+                });
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        // Observe all sections
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+
+        // Scroll to section when dot is clicked
+        scrollDots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            const targetSection = document.getElementById(dot.dataset.section);
+            if (targetSection) {
+              window.scrollTo({
+                top: targetSection.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Background -->
+    <div class="background">
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="logo">
+        <img src="/api/placeholder/40/40" alt="Cupertino High Logo" />
+        <span>Cupertino High <span class="highlight">CareerBridge</span></span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#testimonials">Success Stories</a>
+        <a href="#employers">Top Employers</a>
+      </div>
+
+      <div class="login-container">
+        <button
+          id="login-button"
+          class="login-button"
+          onclick="toggleDropdown()"
+        >
+          Log In
+        </button>
+        <div id="dropdown" class="dropdown">
+          <a href="employer-login.html">Employer Log In</a>
+          <a href="login.html">Student Log In</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-dot active" data-section="hero"></div>
+      <div class="scroll-dot" data-section="features"></div>
+      <div class="scroll-dot" data-section="how-it-works"></div>
+      <div class="scroll-dot" data-section="testimonials"></div>
+      <div class="scroll-dot" data-section="employers"></div>
+      <div class="scroll-dot" data-section="stats"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <h1>
+          Launch Your <span class="highlight">Career Journey</span> With
+          Confidence
+        </h1>
+        <p>
+          Connect with top employers and discover exciting opportunities
+          tailored specifically for Cupertino High students. Build your future,
+          one opportunity at a time.
+        </p>
+        <div class="hero-buttons">
+          <button class="cta-primary">Start Your Journey</button>
+          <button class="cta-secondary">Learn More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+      <div class="section-header">
+        <h2>Why Choose <span class="highlight">CareerBridge?</span></h2>
+        <p>
+          We've designed a platform that puts your future first, with features
+          that help you stand out and succeed.
+        </p>
+      </div>
+
+      <div class="feature-cards">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="/api/placeholder/30/30" alt="AI Matching" />
+          </div>
+          <h3>AI-Powered Job Matching</h3>
+          <p>
+            Our advanced algorithm analyzes your skills, interests, and career
+            goals to recommend opportunities that align perfectly with your
+            aspirations.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="/api/placeholder/30/30" alt="Exclusive Opportunities" />
+          </div>
+          <h3>Exclusive Opportunities</h3>
+          <p>
+            Access jobs and internships exclusively available to Cupertino High
+            students, with opportunities ranging from Fortune 500 companies to
+            exciting local startups.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="/api/placeholder/30/30" alt="Quick Applications" />
+          </div>
+          <h3>1-Click Applications</h3>
+          <p>
+            Create your profile once and apply to multiple positions with a
+            single click. Our streamlined process saves you time and increases
+            your chances of success.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+      <div class="section-header">
+        <h2>Your <span class="highlight">Journey</span> to Success</h2>
+        <p>
+          Getting started is simple. Follow these steps to launch your career
+          with CareerBridge.
+        </p>
+      </div>
+
+      <div class="steps-container">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Create Your Profile</h3>
+            <p>
+              Sign up and build your profile by highlighting your skills,
+              interests, and career goals. Our AI-powered system will analyze
+              your profile to match you with the perfect opportunities.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Explore Opportunities</h3>
+            <p>
+              Browse through our extensive collection of jobs, internships, and
+              volunteering positions that are tailored to your profile. Filter
+              by industry, location, and more to find your perfect match.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Apply With Ease</h3>
+            <p>
+              Apply to multiple positions with just one click. Our streamlined
+              application process ensures your profile reaches employers quickly
+              and effectively.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Launch Your Career</h3>
+            <p>
+              Accept your offer and begin your professional journey with
+              confidence, knowing that CareerBridge will continue to support
+              your growth throughout your career.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+      <div class="section-header">
+        <h2>Success <span class="highlight">Stories</span></h2>
+        <p>
+          Hear from fellow Cupertino High students who launched their careers
+          through CareerBridge.
+        </p>
+      </div>
+
+      <div class="testimonials-container">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <img src="/api/placeholder/60/60" alt="Emily Chen" />
+            </div>
+            <div class="testimonial-author">
+              <h4>Emily Chen</h4>
+              <p>Software Engineering Intern at Google</p>
+            </div>
+          </div>
+          <div class="testimonial-content">
+            <p>
+              CareerBridge helped me land my dream internship at Google! The
+              personalized job matching and interview preparation resources were
+              invaluable in my journey.
+            </p>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <img src="/api/placeholder/60/60" alt="Michael Zhang" />
+            </div>
+            <div class="testimonial-author">
+              <h4>Michael Zhang</h4>
+              <p>Marketing Assistant at Apple</p>
+            </div>
+          </div>
+          <div class="testimonial-content">
+            <p>
+              I never thought I'd be working at Apple right after high school.
+              CareerBridge made it possible by connecting me with opportunities
+              I wouldn't have found elsewhere.
+            </p>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <img src="/api/placeholder/60/60" alt="Sophia Patel" />
+            </div>
+            <div class="testimonial-author">
+              <h4>Sophia Patel</h4>
+              <p>Research Assistant at Stanford</p>
+            </div>
+          </div>
+          <div class="testimonial-content">
+            <p>
+              The career coaching available through CareerBridge helped me
+              prepare for my interview and stand out from other candidates. I'm
+              now working in a research lab at Stanford!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Top Employers Section -->
+    <section id="employers">
+      <div class="section-header">
+        <span class="employers-subtitle">TRUSTED BY TOP COMPANIES</span>
+        <h2>Connect With <span class="highlight">Industry Leaders</span></h2>
+        <p>
+          CareerBridge partners with prestigious employers who are looking
+          specifically for Cupertino High talent.
+        </p>
+      </div>
+
+      <div class="employers-grid">
+        <div class="employer-logo">
+          <img src="/api/placeholder/120/60" alt="Google" />
+        </div>
+        <div class="employer-logo">
+          <img src="/api/placeholder/120/60" alt="Apple" />
+        </div>
+        <div class="employer-logo">
+          <img src="/api/placeholder/120/60" alt="Meta" />
+        </div>
+        <div class="employer-logo">
+          <img src="/api/placeholder/120/60" alt="Microsoft" />
+        </div>
+        <div class="employer-logo">
+          <img src="/api/placeholder/120/60" alt="Adobe" />
+        </div>
+        <div class="employer-logo">
+          <img src="/api/placeholder/120/60" alt="Cisco" />
+        </div>
+        <div class="employer-logo">
+          <img src="/api/placeholder/120/60" alt="Intel" />
+        </div>
+        <div class="employer-logo">
+          <img src="/api/placeholder/120/60" alt="Nvidia" />
+        </div>
+        <div class="employer-logo">
+          <img src="/api/placeholder/120/60" alt="Oracle" />
+        </div>
+        <div class="employer-logo">
+          <img src="/api/placeholder/120/60" alt="Tesla" />
+        </div>
+        <div class="employer-logo">
+          <img src="/api/placeholder/120/60" alt="IBM" />
+        </div>
+        <div class="employer-logo">
+          <img src="/api/placeholder/120/60" alt="Salesforce" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats">
+      <div class="section-header">
+        <h2>Our <span class="highlight">Impact</span> By The Numbers</h2>
+        <p>
+          CareerBridge has helped hundreds of Cupertino High students launch
+          successful careers across various industries.
+        </p>
+      </div>
+
+      <div class="stats-container">
+        <div class="stat-card">
+          <h3>Students Placed</h3>
+          <div class="stat-value">500+</div>
+          <p>Successful job and internship placements</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Average Salary</h3>
+          <div class="stat-value">$75K</div>
+          <p>For full-time positions after graduation</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Placement Time</h3>
+          <div class="stat-value">4 Weeks</div>
+          <p>Average time from application to offer</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Satisfaction Rate</h3>
+          <div class="stat-value">97%</div>
+          <p>Students satisfied with their placements</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section id="cta" class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to <span class="highlight">Launch Your Career?</span></h2>
+        <p>
+          Join hundreds of Cupertino High students who have found their dream
+          opportunities through CareerBridge. Your future starts here.
+        </p>
+        <div class="cta-buttons">
+          <button class="cta-primary">View Job Board</button>
+          <button class="cta-secondary">Create Your Profile</button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
