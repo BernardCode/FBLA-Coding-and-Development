@@ -1,0 +1,264 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Layout */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #071c39;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #071c39;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.user-role {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Job Card */
+.job-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #071c39;
+  color: white;
+  padding: 15px 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.job-content {
+  padding: 20px;
+}
+
+/* Compressed Job Item */
+.job-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.job-item:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.job-summary {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.job-main-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.job-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #071c39;
+  margin-bottom: 4px;
+}
+
+.job-brief {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.job-meta-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.badge-approved {
+  background-color: #ecfdf5;
+  color: #10b981;
+}
+
+.applications-count {
+  font-size: 13px;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.expand-icon {
+  font-size: 18px;
+  color: #64748b;
+  transition: transform 0.3s ease;
+}
+
+/* Expanded Details */
+.job-details {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  background-color: #f8fafc;
+  border-top: 1px solid #e5e7eb;
+}
+
+.details-content {
+  padding: 20px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.detail-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-label {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.detail-value {
+  font-weight: 500;
+}
+
+.job-description {
+  margin-bottom: 20px;
+}
+
+.description-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.description-text {
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.job-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 15px;
+}
+
+.action-button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-primary {
+  background-color: #071c39;
+  color: white;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #071c39;
+  border: 1px solid #e5e7eb;
+}
+
+.btn-danger {
+  background-color: white;
+  color: #ef4444;
+  border: 1px solid #ef4444;
+}
+
+/* Active (expanded) state */
+.job-item.active .expand-icon {
+  transform: rotate(180deg);
+}
+
+.job-item.active .job-details {
+  height: auto;
+}

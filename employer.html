@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareerBridge Employer - Job Listing</title>
+    <link rel="stylesheet" href="employer.css" />
+    <style>
+      /* Additional styles for loading and error states */
+      .loading-message, .error-message, .empty-message {
+        padding: 30px;
+        text-align: center;
+        color: #666;
+        font-size: 16px;
+      }
+      
+      .error-message {
+        color: #e53e3e;
+      }
+      
+      .empty-message a {
+        color: #4a6cf7;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      
+      .empty-message a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <h1 class="header-title">CareerBridge Employer</h1>
+        <div class="user-info">
+          <div class="avatar">SJ</div>
+          <div>
+            <div class="user-name">Sarah Johnson</div>
+            <div class="user-role">Career Counselor</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Job Card -->
+      <div class="job-card">
+        <div class="card-header">
+          <div>Job Listing</div>
+          <a href="create-job.html" class="add-button"><span>+</span> Add New Job</a>
+        </div>
+
+        <div class="job-content">
+          <!-- Dynamic job content will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleJobDetails(jobId) {
+        const jobItem = document.getElementById(jobId);
+        jobItem.classList.toggle("active");
+      }
+    </script>
+    <!-- Add the employer.js script -->
+    <script src="employer.js"></script>
+  </body>
+</html>

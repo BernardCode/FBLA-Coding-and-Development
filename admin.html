@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerBridge Admin - Job Listings</title>
+  
+  <!-- Custom Styles -->
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f7;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Header Styles */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .header-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin: 0;
+    }
+    
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .avatar {
+      width: 40px;
+      height: 40px;
+      background-color: #4a6cf7;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+    
+    .user-name {
+      font-weight: 500;
+    }
+    
+    .user-role {
+      font-size: 14px;
+      color: #6b7280;
+    }
+    
+    /* Job Card Styles */
+    .job-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #eaeaea;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .add-button {
+      background-color: #4a6cf7;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 14px;
+      transition: background-color 0.2s;
+    }
+    
+    .add-button:hover {
+      background-color: #3a5ce5;
+    }
+    
+    /* Filter Section */
+    .filter-section {
+      padding: 16px 24px;
+      border-bottom: 1px solid #eaeaea;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .search-container {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+    }
+    
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 10px 10px 10px 36px;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: #4a6cf7;
+      box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.1);
+    }
+    
+    .approval-count {
+      font-size: 14px;
+      color: #6b7280;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .pending-icon {
+      color: #f59e0b;
+      font-size: 16px;
+    }
+    
+    /* Job Listings Table */
+    .job-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    
+    .job-table th {
+      text-align: left;
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #6b7280;
+      background-color: #f9fafb;
+      border-bottom: 1px solid #eaeaea;
+    }
+    
+    .job-table td {
+      padding: 16px;
+      border-bottom: 1px solid #eaeaea;
+      vertical-align: middle;
+      text-align: left;
+    }
+    
+    .job-table tr:hover {
+      background-color: #f9fafb;
+    }
+    
+    /* Column widths */
+    .job-table th:nth-child(1), .job-table td:nth-child(1) {
+      width: 30%;
+    }
+    
+    .job-table th:nth-child(2), .job-table td:nth-child(2) {
+      width: 15%;
+    }
+    
+    .job-table th:nth-child(3), .job-table td:nth-child(3) {
+      width: 15%;
+    }
+    
+    .job-table th:nth-child(4), .job-table td:nth-child(4) {
+      width: 10%;
+      text-align: center;
+    }
+    
+    .job-table th:nth-child(5), .job-table td:nth-child(5) {
+      width: 10%;
+      text-align: center;
+    }
+    
+    .job-table th:nth-child(6), .job-table td:nth-child(6) {
+      width: 20%;
+      text-align: right;
+    }
+    
+    .job-title {
+      font-weight: 600;
+      font-size: 16px;
+      color: #111827;
+      margin: 0 0 4px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .company-name {
+      color: #6b7280;
+      font-size: 14px;
+    }
+    
+    .work-arrangement {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .arrangement-icon {
+      color: #9ca3af;
+    }
+    
+    /* Status Badges */
+    .status-badge {
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 500;
+      display: inline-block;
+      text-align: center;
+    }
+    
+    .badge-pending {
+      background-color: #fff7ed;
+      color: #c2410c;
+      border: 1px solid #ffedd5;
+    }
+    
+    .badge-approved {
+      background-color: #ecfdf5;
+      color: #047857;
+      border: 1px solid #d1fae5;
+    }
+    
+    /* Action Buttons */
+    .approve-button {
+      background-color: #4a6cf7;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background-color 0.2s;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .approve-button:hover {
+      background-color: #3a5ce5;
+    }
+    
+    /* Notification Styles */
+    #notificationContainer {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    
+    /* Loading State */
+    .loading-row td {
+      text-align: center;
+      padding: 24px;
+      color: #6b7280;
+    }
+    
+    /* Material Icons */
+    .material-icons {
+      font-family: 'Material Icons';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+  
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="header-title">CareerBridge Admin</h1>
+      <div class="user-info">
+        <div class="avatar">SJ</div>
+        <div>
+          <div class="user-name">Sarah Johnson</div>
+          <div class="user-role">Career Counselor</div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Job Card -->
+    <div class="job-card">
+      <div class="card-header">
+        <div>Job Listings</div>
+        <button class="add-button" onclick="window.location.href='create-job.html'">
+          <span>+</span> Add New Job
+        </button>
+      </div>
+      
+      <!-- Filter Section -->
+      <div class="filter-section">
+        <div class="search-container">
+          <span class="material-icons search-icon">search</span>
+          <input type="text" id="filterInput" class="search-input" placeholder="Filter by job title or company">
+        </div>
+        
+        <div class="approval-count">
+          <span class="material-icons pending-icon">pending</span>
+          <span id="pendingCount">0</span> <span>pending approval</span>
+        </div>
+      </div>
+      
+      <!-- Job Listings Table -->
+      <table class="job-table">
+        <thead>
+          <tr>
+            <th>Job</th>
+            <th>Work Arrangement</th>
+            <th>Pay Range</th>
+            <th style="text-align: center;">Applications</th>
+            <th style="text-align: center;">Status</th>
+            <th style="text-align: right;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="jobListingsBody">
+          <!-- Example row - Will be replaced by dynamic content -->
+          <tr>
+            <td>
+              <h3 class="job-title">Frontend Developer</h3>
+              <div class="company-name">Acme Inc.</div>
+            </td>
+            <td>
+              <div class="work-arrangement">
+                <span class="material-icons arrangement-icon">wifi</span>
+                <span>Remote</span>
+              </div>
+            </td>
+            <td>$60,000 - $80,000</td>
+            <td>12</td>
+            <td>
+              <span class="status-badge badge-pending">Pending</span>
+            </td>
+            <td style="text-align: right;">
+              <button class="approve-button">
+                <span class="material-icons" style="font-size: 16px;">check</span>
+                Approve
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add the admin.js script -->
+  <script src="admin.js"></script>
+</body>
+</html>

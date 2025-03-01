@@ -1,0 +1,96 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 25px;
+}
+.card {
+  background: #f7f7f7;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+  margin-bottom: 20px;
+}
+.card-title {
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+}
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.tabs button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  background: #e0e0e0;
+}
+.tabs button.active {
+  background: #007bff;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+.job-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 30px;
+}
+.job-title {
+  font-size: 1.6em;
+  font-weight: bold;
+}
+.job-company {
+  color: gray;
+}
+.job-description {
+  margin: 10px 0;
+}
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 15px;
+  font-size: 0.8em;
+}
+.badge-location {
+  background: #dbe9fe;
+  color: #004085;
+}
+.badge-salary {
+  background: #dcfce7;
+  color: #155724;
+}
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+}
+.apply-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.apply-button:hover {
+  background: #0056b3;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+}
