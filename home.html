@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupertino High CareerBridge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .gradient {
+            --size: 750px;
+            --speed: 50s;
+            --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+
+            width: var(--size);
+            height: var(--size);
+            filter: blur(calc(var(--size) / 5));
+            background-image: linear-gradient(hsl(222, 84%, 60%), hsl(164, 79%, 71%));
+            animation: rotate var(--speed) var(--easing) alternate infinite;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            position: absolute;
+            z-index: -1;
+        }
+
+        @media (min-width: 720px) {
+            .gradient {
+                --size: 500px;
+            }
+        }
+
+        body {
+            background-color: #071c39;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            place-content: center;
+            align-items: center;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        * {
+            transition: all 0.5s ease-out;
+        }
+
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .header span {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .login-container {
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login-button {
+            padding: 0.75rem 1.5rem;
+            min-width: 80px;
+            text-align: center;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: black;
+            background: white;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, background 0.3s ease-in-out;
+        }
+
+        .login-button:hover {
+            background: #f0f0f0;
+            transform: scale(1.1);
+        }
+
+        .login-button:active {
+            transform: scale(0.9);
+        }
+
+        .dropdown {
+            display: none;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 60px;
+            width: 160px;
+            text-align: center;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .dropdown a:hover {
+            background: #f0f0f0;
+        }
+
+        .white-box {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1100px;
+            height: 400px;
+            margin-top: 80px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            padding: 40px;
+            text-align: center;
+            align-items: center;
+        }
+
+        .feature {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .feature img {
+            width: 60px;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 15px;
+            line-height: 1.5;
+            max-width: 90%;
+        }
+    </style>
+    <script>
+        function toggleDropdown() {
+            const button = document.getElementById('login-button');
+            const dropdown = document.getElementById('dropdown');
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+                button.textContent = 'Log In';
+            } else {
+                dropdown.style.display = 'block';
+                button.textContent = 'X';
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="gradient"></div>
+<div class="login-container">
+    <button id="login-button" class="login-button" onclick="toggleDropdown()">Log In</button>
+    <div id="dropdown" class="dropdown">
+        <a href="employer-login.html">Employer Log In</a>
+        <a href="login.html">Student Log In</a>
+    </div>
+</div>
+
+<div class="header">
+    <img src="images/dusty.webp" alt="Cupertino High Logo">
+    <span>Cupertino High CareerBridge</span>
+</div>
+<div class="text-center max-w-lg relative z-10 mt-40">
+    <h1 class="text-3xl font-bold text-[#CFE2FF]">Build Your Perfect Career Bridge</h1>
+    <p class="text-white mt-4">Connect with top employers and discover exciting opportunities through your school's guidance department job board.</p>
+    <button class="mt-6 bg-black text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-gray-800 transition">
+        View Job Board →
+    </button>
+</div>
+<div class="white-box">
+    <div class="feature">
+        <img src="images/briefcase.png" alt="Briefcase Icon">
+        <h3>Personalized Job Matches</h3>
+        <p>Receive personalized job recommendations based on your skills, interests, and career goals, ensuring you find the best opportunities suited for you.</p>
+    </div>
+    <div class="feature">
+        <img src="images/promotion.png" alt="Promotion Icon">
+        <h3>Explore Career Opportunities</h3>
+        <p>Browse a vast selection of career opportunities that cater to your passions, strengths, and future ambitions, helping you take the next step forward.</p>
+    </div>
+    <div class="feature">
+        <img src="images/resume.png" alt="Resume Icon">
+        <h3>Streamlined Application Process</h3>
+        <p>Easily submit applications through a seamless and efficient process, reducing complexity and increasing your chances of landing your dream job.</p>
+    </div>
+</div>
+</body>
+</html>

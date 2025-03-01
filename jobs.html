@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <link rel="stylesheet" href="jobs.css" />
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1 class="card-title">Job Listings</h1>
+    </div>
+
+    <div id="browse" class="tab-content active" style="box-shadow: 0 10px 30px rgba(0,0,0,0.2); border-radius: 15px; padding: 20px; background: #e3f2fd;">
+        <div style="display: flex; gap: 10px; margin-bottom: 20px; align-items: stretch; flex-wrap: nowrap; background: #f7f7f7; border-radius: 15px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <div style="position: relative; flex: 1;"><img src="search.png" alt="Search Icon" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; opacity: 0.6;"><input type="text" class="search-input" placeholder="Search jobs..." style="flex: 1; padding: 15px 15px 15px 40px; box-sizing: border-box; border-radius: 15px; border: none; font-size: 1.6em; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 20px; outline: none; transition: border 0.3s ease;" onfocus="this.style.border='2px solid #1c2539';" onblur="this.style.border='none';"></div>
+            <button style="background: transparent; color: #6c757d; border: none; padding: 15px 20px; height: 100%; padding: 15px 25px; display: flex; align-items: stretch;" border-radius: 15px; cursor: pointer; font-size: 1.6em; display: flex; align-items: stretch; gap: 5px; height: 100%;"><img src="filter.png" alt="Filter Icon" style="width: 20px; height: 20px; opacity: 0.6;"> <span style="font-size: 2em;">Filter</span></button>
+        </div>
+
+        <div class="job-card" style="position: relative; padding: 25px 30px; font-size: 1.6em; line-height: 1.4em; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 15px; margin-bottom: 20px; background: #f7f7f7;">
+            <div class="job-title">Summer Intern</div>
+            <div class="job-company">Tech Corp</div>
+            <div class="job-description">Looking for passionate students interested in software development</div>
+            <span class="badge badge-location" style="background: #dbe9fe; color: #004085; font-size: 0.8em; padding: 3px 8px;">Remote</span>
+            <span class="badge badge-salary" style="background: #dcfce7; color: #155724; font-size: 0.8em; padding: 3px 8px;">$20/hr</span><br><button class="apply-button" style="background: #1c2539; color: white; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); padding: 15px 30px; font-size: 1em; border-radius: 15px; box-shadow: 0 0 5px rgba(28, 37, 57, 0.3);">Apply Now</button>
+        </div>
+    </div>
+</div>
+<script>
+    function showTab(tab) {
+        var contents = document.querySelectorAll('.tab-content');
+        contents.forEach(content => content.classList.remove('active'));
+        document.getElementById(tab).classList.add('active');
+        var buttons = document.querySelectorAll('.tabs button');
+        buttons.forEach(button => button.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+</script>
+</body>
+</html>
